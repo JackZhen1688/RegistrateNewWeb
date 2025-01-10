@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row top-bar">
+        <div class="col-sm-4">&nbsp;
+            Weclome, Devon Zhen
+        </div>
+        <div class="col-sm-8"> 
+            <div class="usa-accordion text-end">
+              Dec 29, 2019 10:25:10AM &nbsp; &nbsp; &nbsp; &nbsp;
+              <button class="btn btn-link login-bar text-end">
+                <a routerLink="/login" *ngIf="!menuDisplay">Login</a>
+                <a routerLink="/logout" *ngIf="menuDisplay">Sign Out</a>
+              </button>
+            </div>
+        </div>
+    </div>
+    <div class="row main-bar-backgroud">
+        <div class="col-sm-1 btn-group">
+            <a routerLink="/"><img withd="240" height="50" src="assets/images/logo.png"></a>
+        </div>
+        <div class="col-sm-9 menu-title text-center vertical-middle" [hidden]="!menuDisplay">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <a routerLink="personDetail" routerLinkActive="active-current" class="link-menu-color"><i class="fa fa-user"></i>&nbsp; Create Profile &nbsp;</a> &nbsp; &nbsp; &nbsp; &nbsp; 
+            <a routerLink="personList" routerLinkActive="active-current" class="link-menu-color"><i class="fa fa-edit"></i>&nbsp; Update Profile &nbsp;</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <i class="fa fa-bar-chart"></i>Charts &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <i class="fa fa-certificate"></i>Diploma &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        </div>
+ 
+        <div class="col-sm-9" [hidden]="menuDisplay"></div> 
+        
+        <div class="col-sm-2 vertical-middle">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search ..." style="height:32px;">
+                  <div class="input-group-append">
+                     <button class="btn btn-secondary" type="button" style="height:32px;">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+              </div>
+        </div>
+    </div>
+  </div> 
+ 
+  <!--
+<a routerLink="/" routerLinkActive="active-current"> &nbsp; home &nbsp;</a> &nbsp; &nbsp; &nbsp; &nbsp; 
+<a routerLink="login" routerLinkActive="active-current"> &nbsp; login &nbsp;</a> &nbsp; &nbsp; &nbsp; &nbsp; 
+-->

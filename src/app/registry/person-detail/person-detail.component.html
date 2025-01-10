@@ -1,0 +1,226 @@
+<div class="container-fluid">
+    <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+          <div class="col-sm-12">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12 text-center"><h4>Person Details</h4></div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">&nbsp;</div>
+      </div> 
+      <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8" style="background-color: #8EC3EB;">&nbsp;</div>
+          <div class="col-sm-2"></div>
+      </div> 
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 section-box">
+          <div class="row">
+            <div class="col-sm-3 text-center">
+              <mat-form-field class="full-width" floatLabel="always">
+                <mat-label>User ID</mat-label>
+                <input matInput formControlName="userId" maxlength="15" required>
+                <mat-error>
+                  <span *ngIf="(userId!.dirty || userId!.touched) && userId!.invalid && userId!.errors!['required']">
+                    User ID is required.
+                  </span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3 text-center">
+              <mat-form-field class="full-width" floatLabel="always">
+                <mat-label>Password</mat-label>
+                <input id="password1" type="password" matInput showHideInput formControlName="password">
+                <!--
+                <i class="material-icons" matSuffix showHideTrigger="password1" [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
+            -->  
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3 text-center">
+              <mat-form-field class="full-width" floatLabel="always">
+                <mat-label>Comfirm Password</mat-label>
+                <input id="confirmPassword1" type="password" matInput showHideInput formControlName="confirmPassword">
+                <!--
+                <i class="material-icons" matSuffix showHideTrigger="confirmPassword1" [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
+                <mat-error *ngIf="(confirmPassword.dirty || confirmPassword.touched) && confirmPassword.invalid ">
+                  Passwords do not match
+                </mat-error>  
+                -->
+              </mat-form-field>            
+            </div>
+            <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                    <mat-label>Person Type</mat-label>
+                    <mat-select formControlName="pertId" required>
+                      <mat-option  [value]="personType.id" *ngFor="let personType of personTypes">
+                        {{personType.type}}
+                      </mat-option>
+                    </mat-select>    
+                  </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" maxlength="30" required>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" maxlength="30" required>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>SSN:</mat-label>
+                  <input matInput formControlName="ssn" mask="000-00-0000" required>
+                  <mat-error>
+                    <span *ngIf="(ssn!.dirty || ssn!.touched) && ssn!.invalid && ssn!.errors!['required']">
+                      SSN is required.
+                    </span>
+                    <span *ngIf="(ssn!.dirty || ssn!.touched) && ssn!.invalid">
+                      SSN is invalid.
+                    </span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Birthday Date:</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="birthDay">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>
+                      <span *ngIf="(birthDay!.dirty || birthDay!.touched) && birthDay!.invalid">
+                          Birthday is invalid.
+                      </span>
+                  </mat-error> 
+                </mat-form-field>
+              </div>
+          </div>
+          <!-- Address Information -->
+          <div formGroupName="address"> 
+            <div class="row">
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Street</mat-label>
+                  <input matInput formControlName="street" maxlength="30">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>City</mat-label>
+                  <input matInput formControlName="city" maxlength="30">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>State</mat-label>
+                  <input matInput formControlName="state" mask="SS" oninput="this.value=this.value.toUpperCase()">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Zip code</mat-label>
+                  <input matInput formControlName="zip" mask="99999">           
+                </mat-form-field>
+              </div>
+          </div>
+          </div> 
+          <!-- Contact Information -->
+          <div formGroupName="emgContact"> 
+          <div class="row">
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Contact Name</mat-label>
+                  <input matInput formControlName="contactName" maxlength="30">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Contact Relation</mat-label>
+                  <input matInput formControlName="contactRelation" maxlength="30">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Contact Phone</mat-label>
+                  <input matInput formControlName="contactPhone" mask="(000) 000-0000">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-3 text-center">
+                <mat-form-field class="full-width" floatLabel="always">
+                  <mat-label>Contact Email</mat-label>
+                  <input matInput formControlName="contactEmail" maxlength="30">           
+                  <mat-hint>
+                    <span *ngIf="(contactEmail!.dirty || contactEmail!.touched) && contactEmail!.invalid">
+                        EMail is invalid.
+                    </span>
+                </mat-hint>
+                </mat-form-field>
+              </div>
+          </div>
+          </div>
+  
+          <!-- Add dynamic Phones -->
+          <div formArrayName="phones">
+            <div class="row" *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i">
+              <div class="col-sm-3 text-center">
+                      <mat-form-field class="full-width" floatLabel="always">
+                      <mat-label *ngIf="i==0">Phone</mat-label>
+                      <mat-label *ngIf="i!=0">&nbsp;</mat-label>
+                      <input matInput formControlName="phone" mask="(000) 000-0000">
+                  </mat-form-field>                
+              </div>
+              <div class="col-sm-3 text-center">
+                  <mat-form-field class="full-width" floatLabel="always">
+                      <mat-label *ngIf="i==0">Phone Type</mat-label>
+                      <mat-label *ngIf="i!=0">&nbsp;</mat-label>
+                      <mat-select formControlName="phoneType">
+                        <mat-option [value]="phoneType.type" *ngFor="let phoneType of phoneTypes" >
+                          {{phoneType.type}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>     
+              </div>
+              <div class="col-sm-1">&nbsp; &nbsp; &nbsp;
+                <a [routerLink]="" (click)="delPhone(i);" *ngIf="phones.controls.length > 1">
+                  <i class="fa fa-minus-square-o fa-lg" aria-hidden="true" style="color: rgb(131, 130, 130);"></i>
+                </a>   
+              </div>
+              <div class="col-sm-1">
+                <a [routerLink]="" (click)="addPhone();" *ngIf="phones.controls.length-1 == i">
+                  <i class="fa fa-plus-square-o fa-lg" aria-hidden="true" style="color: rgb(131, 130, 130);"></i>
+                </a>   
+              </div>
+              <div class="col-sm-4"></div>
+            </div>
+          </div>
+          <!-- End adding phones-->
+  
+          <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                  <button type="submit" mat-raised-button [disabled]="!detailForm.valid" *ngIf="updateFlag==false">&nbsp; Save &nbsp;</button>
+                  <button type="submit" mat-raised-button [disabled]="!detailForm.valid" *ngIf="updateFlag==true">&nbsp; Update &nbsp;</button>
+              </div>
+              <div class="col-sm-3 text-center">
+                  <button type="button" mat-raised-button (click)="formReset();">&nbsp; Reset &nbsp;</button>
+              </div>
+          </div>   
+        </div> 
+        <div class="col-sm-2"></div>
+      </div>     
+      <div class="row">
+        <div class="col-sm-12">
+      </div>
+      </div>
+    </form>
+  </div>
+  
+  

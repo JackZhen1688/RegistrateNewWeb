@@ -1,0 +1,31 @@
+.full-width {
+    width: 80%;
+  }
+
+.section-box {
+    font-size: 15px;
+    border: 1px solid lightgrey;
+    padding: 15px;
+    margin: 1px;
+    box-shadow: 1px 3px lightgrey;
+  }
+
+.fontsize {
+    font-size: 12px;
+    font-weight: normal;
+}  
+a {
+    text-decoration: none !important;
+}
+a:link {
+    color: grey;
+}
+a:visited {
+    color: grey;
+}
+a:hover {
+    color: grey;
+}
+a:active {
+    color: grey;
+}

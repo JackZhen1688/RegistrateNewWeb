@@ -1,0 +1,62 @@
+<p>&nbsp;</p>
+<div class="container-fluid">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-sm-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center"><h4>Long-In</h4></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">&nbsp;</div>
+    </div> 
+    <div class="row">
+        <div class="col-sm-12">&nbsp;</div>
+    </div> 
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 section-box">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <mat-form-field class="full-width" floatLabel="always">
+              <input matInput placeholder="User id" formControlName="userId">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <mat-form-field class="full-width" floatLabel="always">
+              <input id="password1" type="password" placeholder="Password" matInput showHideInput formControlName="password">
+              <!--
+              <i class="material-icons" matSuffix showHideTrigger="password1" [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
+            -->
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="full-width">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <a routerLink="/forgetPwd" class="fontsize">Forget Password</a> 
+              </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-sm-12 text-end">
+                <button type="submit" mat-raised-button [disabled]="!loginForm.valid">&nbsp; Login &nbsp;</button>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </div>
+        </div>   
+        <!--
+        <mat-form-field>
+          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-hint 
+             *ngIf="!passwordInput.value">Enter your password
+          </mat-hint>
+        </mat-form-field>      
+        -->
+      </div> 
+      <div class="col-sm-4"></div>
+    </div>     
+  </form>
+</div>

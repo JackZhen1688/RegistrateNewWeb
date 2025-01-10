@@ -1,0 +1,43 @@
+div.top-bar {
+    background-color: #555555; 
+    color: yellow; 
+    font-size:12px;
+    text-decoration: none;
+}
+button.login-bar {
+    color: yellow;
+    font-size:12px;
+    text-decoration:none;
+    width:200px; height:25px;
+}
+
+div.main-bar-backgroud {
+    background-color:red; 
+    height:50px;
+}
+div.menu-title {
+    color:yellow;
+    font-size:15px;
+	font-weight: bold;
+    text-decoration:none;
+}
+div.vertical-middle {
+	margin-top: auto;
+    margin-bottom: auto;
+}
+
+a {
+    text-decoration: none !important;
+}
+a:link {
+    color: yellow;
+}
+a:visited {
+    color: yellow;
+}
+a:hover {
+    color: yellow;
+}
+a:active {
+    color: yellow;
+}
