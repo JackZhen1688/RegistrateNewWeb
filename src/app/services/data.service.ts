@@ -29,7 +29,7 @@ export class DataService {
     //return this.http.get(this.url+"/persontype.json");
     return this.http.get(this.hostURL+"/personTypes")
   }
-  getPersonTypeId(type: string): Observable<any>{
+  getPersonTypeById(type: string): Observable<any>{
     //return this.http.get(this.url+"/personTypeId.json");
     return this.http.get(this.hostURL+"/personTypeById/"+type)
   }

@@ -208,7 +208,7 @@ export class PersonDetailComponent {
   }
 
   onSelectionChange(event: any) {
-    this.restService.getPersonTypeId(event.value)
+    this.restService.getPersonTypeById(event.value)
     .subscribe({
       next: value => {
         this.detailForm.get('personType')!.get("type")!.setValue(value.type);
