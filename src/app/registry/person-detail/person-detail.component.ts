@@ -66,7 +66,11 @@ export class PersonDetailComponent {
       password: this.formBuilder.control('', [Validators.required]),
       //confirmPassword: this.formBuilder.control('',[matchValues('password')]),
       confirmPassword: this.formBuilder.control(''),
-      pertId: this.formBuilder.control(''),
+      //pertId: this.formBuilder.control(''),
+      personType: this.formBuilder.group({
+        id: this.formBuilder.control(''),
+        type: this.formBuilder.control(''),
+      }),      
       address: this.formBuilder.group({
         id: this.formBuilder.control(''),
         street: this.formBuilder.control(''),
@@ -109,7 +113,11 @@ export class PersonDetailComponent {
       'userId': data.userId,
       'password': data.password,
       'confirmPassword': data.password,
-      'pertId': data.pertId,
+      //'pertId': data.pertId,
+      'personType': {
+        'id': data.personType.id,
+        'type': data.personType.type,
+      },
       'address': {
         'id': data.address.id,
         'street': data.address.street,
@@ -190,27 +198,24 @@ export class PersonDetailComponent {
 
   getPhoneTypes() {
     this.restService.getPhoneTypeData()
-    .subscribe(
-      data => { 
-        this.phoneTypes = data;
+    .subscribe({
+      next: value => {
+        this.phoneTypes = value;
       },
-      err => {
-        console.log("Error occured: getPersonDeital()" + err)
-      }
-    );
+      error: error => console.error('Error:', error),
+      complete: () => console.log('Complete')      
+    });
   }
 
-  onChangePersonType(event: any) {
-    //console.log("Value==="+event.value)
+  onSelectionChange(event: any) {
     this.restService.getPersonTypeId(event.value)
-    .subscribe(
-        data => { 
-          this.detailForm.get('personType')!.get("id")!.setValue(data.id)
-        },
-        err => {
-          console.log("Error occured: getPersonDeital()" + err)
-        }
-    );
+    .subscribe({
+      next: value => {
+        this.detailForm.get('personType')!.get("type")!.setValue(value.type);
+      },
+      error: error => console.error('Error:', error),
+      complete: () => console.log('Complete')        
+    });
   }
 
   onDateChange(event: any, component: any) {

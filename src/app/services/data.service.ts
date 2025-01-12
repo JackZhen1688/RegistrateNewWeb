@@ -31,7 +31,7 @@ export class DataService {
   }
   getPersonTypeId(type: string): Observable<any>{
     //return this.http.get(this.url+"/personTypeId.json");
-    return this.http.get(this.hostURL+"/personTypeByType/"+type)
+    return this.http.get(this.hostURL+"/personTypeById/"+type)
   }
   getPhoneTypeData(): Observable<any>{
     //return this.http.get(this.url+"/phonetype.json");

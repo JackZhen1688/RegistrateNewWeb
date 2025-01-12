@@ -47,7 +47,7 @@
               <th mat-header-cell *matHeaderCellDef> PersonType </th>
               <td mat-cell *matCellDef="let element">
                   <span *ngFor="let personType of personTypes">
-                    <span *ngIf="personType.id==element.pertId">{{personType.type}}</span>
+                    <span *ngIf="personType.id==element.personType.id">{{personType.type}}</span>
                   </span> 
               </td>
             </ng-container>

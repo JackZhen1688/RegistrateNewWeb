@@ -50,15 +50,17 @@
                 -->
               </mat-form-field>            
             </div>
-            <div class="col-sm-3 text-center">
+            <div formGroupName="personType"> 
+              <div class="col-sm-3 text-center">
                 <mat-form-field class="full-width" floatLabel="always">
                     <mat-label>Person Type</mat-label>
-                    <mat-select formControlName="pertId" required>
+                    <mat-select formControlName="id" (selectionChange)="onSelectionChange($event)" required>
                       <mat-option  [value]="personType.id" *ngFor="let personType of personTypes">
                         {{personType.type}}
                       </mat-option>
-                    </mat-select>    
+                    </mat-select>
                   </mat-form-field>
+              </div>
             </div>
           </div>
           <div class="row">
